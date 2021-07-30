@@ -1,28 +1,41 @@
-// Import the React and ReactDom libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
+import faker from 'faker';
+import CommentDetail from './CommentDetails';
+import ApprovalCard from './ApprovalCard';
 
-// Create a react component, function component
 const App = () => {
-    const buttonText = { text: 'Click Me' };
-    const labelText = 'Enter name:';
-
     return (
-        <div>
-            <label className="label" htmlFor="name">
-                {labelText}
-            </label>
-            <input id="name" type="text"/>
-            <button style={{ backgroundColor: 'blue', color: 'white' }}>
-                {buttonText.text}
-            </button>
+        <div className="ui container comments">
+            <ApprovalCard>
+                <CommentDetail 
+                    author="Sam" 
+                    timeAgo="Today at 4:45PM" 
+                    avatar={faker.image.avatar()} 
+                    commentText="Nice!"
+                />
+            </ApprovalCard>
+
+            <ApprovalCard>
+                <CommentDetail 
+                    author="Alex" 
+                    timeAgo="Today at 2:00A" 
+                    avatar={faker.image.avatar()} 
+                    commentText="Nice blog!" 
+                />
+            </ApprovalCard>
+
+            <ApprovalCard>
+                <CommentDetail 
+                    author="Jane" 
+                    timeAgo="Today at 10:45AM" 
+                    avatar={faker.image.avatar()} 
+                    commentText="Nice blog post!" 
+                />
+            </ApprovalCard>
         </div>
-    );
-};
+        
+    );     
+}; 
 
-
-// Take the react component and show it on the screen
-ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
-);
+ReactDOM.render(<App />, document.querySelector('#root'));
